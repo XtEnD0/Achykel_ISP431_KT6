@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PetShop"
         mc:Ignorable="d"
-        Title="ЗооМагазин" Height="450" Width="800">
+        Title="Товары для животных" Height="650" Width="1000">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="#FF76E383" Grid.Row="0">
+
+            <Label Content="ООО «Товары для животных»" FontSize="18"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+
+            <Image Source="/res/logo.png" Margin="0,0,350,0"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
         
     </Grid>
 </Window>

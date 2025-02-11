@@ -13,18 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PetShop
+namespace PetShop.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ListPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListPage : Page
     {
-        public MainWindow()
+        public ListPage()
         {
             InitializeComponent();
-            Classes.Manager.MainFrame = MainFrame;
-            Classes.Manager.MainFrame.Navigate(new Pages.LoginPage());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Classes.Manager.MainFrame.CanGoBack)
+            {
+                Classes.Manager.MainFrame.GoBack();
+            }
         }
     }
 }
