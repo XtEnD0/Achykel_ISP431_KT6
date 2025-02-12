@@ -28,7 +28,6 @@ namespace PetShop.Pages
         private void LoginButton_Click(object sender, RoutedEventArgs e)
 
         {
-            int i = new int();
             StringBuilder err = new StringBuilder();
 
             if (String.IsNullOrEmpty(LoginTB.Text))
@@ -46,12 +45,33 @@ namespace PetShop.Pages
             }
             else
             {
-                while (i <50)
+                if (Data.TradeEntities.GetContext().User.Any(d => d.UserLogin == LoginTB.Text &&
+                d.UserPassword == PasswordPB.Password))
                 {
-                    err.Append("11101101011000011010110011001011010001101010011000110");
-                    i++;
+                    var user = Data.TradeEntities.GetContext().User.Where(d => d.UserLogin == LoginTB.Text &&
+                    d.UserPassword == PasswordPB.Password).FirstOrDefault();
+                    
+                    switch (user.Role.RoleName)
+                    {
+                        case "Администратор":
+                            MessageBox.Show("Вы вошли как Администратор", "Успех!",MessageBoxButton.OK, MessageBoxImage.Information);
+                            Classes.Manager.MainFrame.Navigate(new Pages.ListPage());
+                            break;
+                        case "Клиент":
+                            MessageBox.Show("Вы вошли как Клиент", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Classes.Manager.MainFrame.Navigate(new Pages.ListPage());
+                            break;
+                        case "Менеджер":
+                            MessageBox.Show("Вы вошли как Администратор", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                            Classes.Manager.MainFrame.Navigate(new Pages.ListPage());
+                            break;
+                    }
                 }
-                MessageBox.Show(err.ToString());
+                else
+                {
+                    MessageBox.Show("Неверный Логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
             }
         }
 

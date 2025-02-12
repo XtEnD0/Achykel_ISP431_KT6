@@ -20,7 +20,7 @@
                        VerticalAlignment="Center" HorizontalAlignment="Center">
             </TextBlock>
             
-            <PasswordBox x:Name="PasswordPB" Height="22" Width="200" FontSize="15"
+            <PasswordBox x:Name="PasswordPB" Height="22" Width="200" FontSize="13"
                          VerticalAlignment="Center" HorizontalAlignment="Center"></PasswordBox>
 
             <Button x:Name="LoginButton" Content="ВОЙТИ" Margin="0,15,0,0" Click="LoginButton_Click"

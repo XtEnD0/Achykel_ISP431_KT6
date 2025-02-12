@@ -23,14 +23,30 @@ namespace PetShop.Pages
         public ListPage()
         {
             InitializeComponent();
+            MainListView.ItemsSource = Data.TradeEntities.GetContext().Product.ToList();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (Classes.Manager.MainFrame.CanGoBack)
             {
                 Classes.Manager.MainFrame.GoBack();
             }
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.AddPage());
+        }
+
+        private void editbut_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Приносим свои извинения, но данная функция приватизирована Шуникулом и только он имеет к ней доступ");
+        }
+
+        private void deletebut_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Приносим свои извинения, но данная функция приватизирована Шуникулом и только он имеет к ней доступ");
         }
     }
 }
