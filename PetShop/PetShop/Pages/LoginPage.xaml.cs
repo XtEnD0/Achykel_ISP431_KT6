@@ -20,6 +20,7 @@ namespace PetShop.Pages
     /// </summary>
     public partial class LoginPage : Page
     {
+        public int imp = 0;
         public LoginPage()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace PetShop.Pages
         private void LoginButton_Click(object sender, RoutedEventArgs e)
 
         {
+
             StringBuilder err = new StringBuilder();
 
             if (String.IsNullOrEmpty(LoginTB.Text))
@@ -41,6 +43,13 @@ namespace PetShop.Pages
             if (err.Length > 0)
             {
                 MessageBox.Show(err.ToString(), "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                imp++;
+                if (imp > 2)
+                {
+                    MessageBox.Show("Проверка на Шуникула пройдена успешно! доступ запрещен!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    LoginButton.IsEnabled = false;
+                    GuestButton.IsEnabled = false;
+                }
 
             }
             else
@@ -70,6 +79,13 @@ namespace PetShop.Pages
                 else
                 {
                     MessageBox.Show("Неверный Логин или пароль", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    imp++;
+                    if (imp > 2)
+                    {
+                        MessageBox.Show("Проверка на Шуникула пройдена успешно! доступ запрещен!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        LoginButton.IsEnabled = false;
+                        GuestButton.IsEnabled = false;
+                    }
                 }
                 
             }
